@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Giáo Làng Sa Đéc · Xây dựng năng lực trong kỷ nguyên AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fc;--surf:#fff;--tx:#14182b;--mut:#5d6580;--line:#e3e6f2;--a:#5b5bf0;--b:#14b8a6;--glow:rgba(91,91,240,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0e1a;--surf:#141830;--tx:#eef0fb;--mut:#9aa2c4;--line:#232848;--a:#8b8bff;--b:#2dd4bf;--glow:rgba(139,139,255,.22)}}
+:root[data-theme="dark"]{--bg:#0b0e1a;--surf:#141830;--tx:#eef0fb;--mut:#9aa2c4;--line:#232848;--a:#8b8bff;--b:#2dd4bf;--glow:rgba(139,139,255,.22)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{background:var(--bg);color:var(--tx);font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800}
+.mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;display:grid;place-items:center;font-size:14px}
+nav{display:flex;gap:4px}
+nav a{padding:8px 14px;border-radius:99px;font-size:14px;font-weight:500;color:var(--mut);transition:.2s}
+nav a:hover{background:var(--glow);color:var(--tx)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:99px;font-weight:600;font-size:14px;border:0;cursor:pointer;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;box-shadow:0 8px 24px var(--glow);transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--tx);border:1px solid var(--line);box-shadow:none}
+@media(max-width:720px){.nav{height:auto;padding:10px 0;flex-wrap:wrap}header nav{order:3;width:100%;overflow-x:auto}.btn{padding:8px 16px}}
+.hero{position:relative;overflow:hidden;text-align:center;padding:90px 0 70px}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;animation:fl 12s ease-in-out infinite alternate;z-index:-1}
+.o1{width:380px;height:380px;background:var(--a);top:-120px;left:-80px}
+.o2{width:320px;height:320px;background:var(--b);bottom:-100px;right:-60px;animation-delay:-5s}
+@keyframes fl{to{transform:translate(40px,30px) scale(1.12)}}
+.tag{display:inline-block;padding:6px 14px;border:1px solid var(--line);background:var(--surf);border-radius:99px;font-size:12.5px;color:var(--mut);letter-spacing:.06em;margin-bottom:22px}
+h1{font-size:clamp(40px,8vw,84px);font-weight:800;line-height:1.05;letter-spacing:-.03em}
+h1 span{background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:18px auto 0;max-width:560px;color:var(--mut);font-size:clamp(16px,2.2vw,20px)}
+.quote{margin:38px auto 0;max-width:720px;background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:22px 26px;text-align:left;color:var(--mut);font-size:15px;box-shadow:0 20px 50px var(--glow)}
+.quote b{color:var(--tx)}
+.cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+section{padding:70px 0}
+.eyebrow{color:var(--a);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.02em;margin:6px 0 26px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tab{padding:10px 18px;border-radius:99px;border:1px solid var(--line);background:var(--surf);color:var(--mut);font:600 14px inherit;font-family:inherit;cursor:pointer;transition:.2s}
+.tab.on{background:linear-gradient(135deg,var(--a),var(--b));color:#fff;border-color:transparent}
+.panel{display:none}.panel.on{display:grid;animation:in .4s}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--a);box-shadow:0 16px 40px var(--glow)}
+.meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mut);align-items:center}
+.pill{padding:3px 10px;border-radius:99px;background:var(--glow);color:var(--a);font-weight:600;font-size:11.5px}
+.card h3{font-size:17px;line-height:1.4}
+.card p{color:var(--mut);font-size:14.5px;flex:1}
+.go{color:var(--a);font-weight:600;font-size:14px}
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;position:relative}
+.step{background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:28px;position:relative;overflow:hidden}
+.step::after{content:attr(data-n);position:absolute;right:18px;top:0;font-size:90px;font-weight:800;color:var(--glow);line-height:1}
+.lv{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--b);text-transform:uppercase}
+.step h3{font-size:24px;margin:6px 0 4px}
+.step em{display:block;color:var(--a);font-style:normal;font-weight:500;margin-bottom:12px}
+.step p{color:var(--mut);font-size:15px}
+.step p b{color:var(--tx)}
+footer{border-top:1px solid var(--line);padding:36px 0 44px;color:var(--mut);font-size:13.5px}
+.fr{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.fr nav a{padding:6px 10px}
+.note{margin-top:20px;font-size:12.5px;opacity:.8;max-width:760px}
+#tt{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surf);color:var(--tx);cursor:pointer;font-size:18px;z-index:30}
+.view{display:none}.view.on{display:block;animation:in .4s}
+nav a.cur{color:var(--a);background:var(--glow)}
+.logo3d{--s:32px;width:var(--s);height:var(--s);perspective:700px;display:inline-block;flex:none}
+.cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:spin 10s linear infinite}
+.cube i{position:absolute;inset:0;display:grid;place-items:center;font:800 calc(var(--s)*.46) 'Be Vietnam Pro',sans-serif;font-style:normal;color:#fff;border-radius:calc(var(--s)*.2);background:linear-gradient(135deg,var(--a),var(--b));border:1px solid rgba(255,255,255,.4);box-shadow:inset 0 0 calc(var(--s)*.35) rgba(255,255,255,.3);text-shadow:0 2px 6px rgba(0,0,0,.3)}
+.cube i:nth-child(even){filter:hue-rotate(35deg)}
+.cube i:nth-child(1){transform:translateZ(calc(var(--s)/2))}.cube i:nth-child(2){transform:rotateY(180deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(3){transform:rotateY(90deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--s)/2))}
+@keyframes spin{from{transform:rotateX(-22deg) rotateY(0)}to{transform:rotateX(-22deg) rotateY(360deg)}}
+.logo3d.big{--s:104px;margin-bottom:34px;filter:drop-shadow(0 24px 28px var(--glow))}
+.pg{padding:56px 0 70px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.bar input,.fld input{flex:1;min-width:200px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surf);color:var(--tx);font:500 15px inherit;font-family:inherit;outline:0}
+.bar input:focus,.fld input:focus{border-color:var(--a);box-shadow:0 0 0 4px var(--glow)}
+.mut{color:var(--mut)}
+.ab{display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center}
+.ab .lock{background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:44px 20px;text-align:center;box-shadow:0 24px 60px var(--glow)}
+.ab .lock .logo3d{--s:130px;margin-bottom:24px;filter:drop-shadow(0 26px 30px var(--glow))}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.chips span{padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--surf);font-size:13.5px;font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.stats div{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+.stats b{display:block;font-size:26px;background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:760px){.ab{grid-template-columns:1fr}}
+.lgn{display:grid;grid-template-columns:1fr 1fr;max-width:900px;margin:0 auto;background:var(--surf);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 30px 70px var(--glow)}
+.lgn .l{padding:44px 28px;text-align:center;background:linear-gradient(160deg,var(--glow),transparent);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lgn .l .logo3d{--s:96px;margin-bottom:26px;filter:drop-shadow(0 22px 26px var(--glow))}
+.lgn .r{padding:40px 32px}
+.fld{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;font-size:13.5px;font-weight:600}
+.fld input{width:100%;flex:none}
+.msg{margin-top:14px;font-size:13.5px;color:var(--b);min-height:20px}
+.cp{margin-top:12px;font-weight:600;color:var(--tx)}
+@media(max-width:760px){.lgn{grid-template-columns:1fr}.lgn .l{padding:30px 20px}}
+.demo{margin-top:18px;padding:14px 16px;border:1px dashed var(--line);border-radius:14px;font-size:13.5px}
+.fill{padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--surf);color:var(--tx);font:500 13.5px inherit;font-family:inherit;cursor:pointer}.fill:hover{border-color:var(--a)}
+[hidden]{display:none!important}
+/*FX*/
+:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.card{position:relative}
+.fav{position:absolute;right:14px;bottom:12px;border:0;background:transparent;font-size:22px;cursor:pointer;color:var(--mut);line-height:1}.fav.on{color:#e5484d}
+#fs{position:fixed;left:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;gap:6px;z-index:30}
+#fs button{height:44px;min-width:44px;padding:0 10px;border-radius:99px;border:1px solid var(--line);background:var(--surf);color:var(--tx);font:700 14px inherit;font-family:inherit;cursor:pointer}
+.prog{margin-bottom:18px}.bar2{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .5s}
+.done{display:flex;gap:8px;align-items:center;margin-top:16px;font-size:14px;font-weight:600;cursor:pointer;position:relative;z-index:1}
+.step.ok{border-color:var(--b)}
+.opt{display:block;width:100%;text-align:left;margin-top:10px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:500 15px inherit;font-family:inherit;cursor:pointer}.opt:hover{border-color:var(--a)}.opt.good{border-color:var(--b);background:var(--glow)}.opt.bad{border-color:#e5484d}
+#bn{display:none;position:fixed;left:0;right:0;bottom:0;z-index:25;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));background:var(--surf);border-top:1px solid var(--line)}
+#bn a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;padding:4px 0;border-radius:12px;color:var(--mut)}#bn i{font-style:normal;font-size:20px}#bn a.cur{color:var(--a);background:var(--glow)}
+@media(max-width:720px){header nav{display:none}.nav{height:64px;padding:0;flex-wrap:nowrap}#bn{display:flex}body{padding-bottom:72px}#tt,#fs{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+/*FXEND*/
+/*FX2*/
+.fld textarea{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;resize:vertical;outline:0}.fld textarea:focus{border-color:var(--a);box-shadow:0 0 0 4px var(--glow)}
+.cube{will-change:transform}
+/*FX2END*/
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#trang-chu"><span class="logo3d" style="--s:30px"></span>Liêm Nguyễn</a>
+  <nav><a href="#trang-chu">Trang chủ</a><a href="#bai-viet">Bài viết</a><a href="#tai-nguyen">Tài nguyên</a><a href="#lo-trinh">Lộ trình</a><a href="#ve-toi">Về tôi</a><a href="#bao-mat">Bảo mật</a></nav>
+  <a class="btn" id="hb" href="#dang-nhap">Đăng nhập</a>
+</div></header>
+
+<main id="v-home" class="view on">
+<div class="hero"><div class="orb o1"></div><div class="orb o2"></div>
+<div class="wrap">
+  <div class="logo3d big"></div><br><span class="tag">✦ XÂY DỰNG NĂNG LỰC TRONG KỶ NGUYÊN AI</span>
+  <h1>GIÁO LÀNG<br><span>SA ĐÉC</span></h1>
+  <p class="sub">Điểm neo có hệ thống giúp bạn bắt đầu đúng với AI, dù đang ở bất kỳ điểm xuất phát nào.</p>
+  <div class="quote">Mỗi sáng thức dậy bạn thấy <b>hàng loạt tin tức AI mới</b> mà không biết bắt đầu từ đâu? Hay đã dùng AI nhưng <b>chưa thấy thay đổi thật sự?</b> Bạn không đơn độc. Vấn đề không nằm ở bạn hay AI, mà ở chỗ thiếu một <b>lộ trình rõ ràng</b>. Website này được xây để làm điểm neo đó.</div>
+  <div class="cta"><a class="btn" href="#lo-trinh">Bắt đầu lộ trình →</a><a class="btn o" href="#bai-viet">Xem bài viết mới</a></div>
+</div></div>
+
+<section id="noidung"><div class="wrap">
+  <div class="eyebrow">Thông tin giá trị</div>
+  <h2>Áp dụng hiệu quả, ngay hôm nay.</h2>
+  <div class="tabs">
+    <button class="tab on" data-p="p0">01 · Bài viết mới nhất</button>
+    <button class="tab" data-p="p1">02 · Kho tài nguyên</button>
+  </div>
+  <div class="panel grid on" id="p0">
+    <a class="card" href="#"><div class="meta"><span class="pill">GÓC NHÌN</span><span>10/11/2026 · 5 phút</span></div><h3>Bản tin AI tuần này: mô hình mới, chi phí API giảm mạnh</h3><p>Tổng hợp ngắn gọn những chuyển động đáng chú ý nhất của ngành AI trong tuần.</p><span class="go">Đọc bài ↗</span></a>
+    <a class="card" href="#"><div class="meta"><span class="pill">PHƯƠNG PHÁP</span><span>02/11/2026 · 9 phút</span></div><h3>Cách giao việc cho AI bằng ngôn ngữ tự nhiên</h3><p>Quy tắc viết lệnh rõ ràng, tách biệt mệnh lệnh và dữ liệu để AI làm đúng ngay lần đầu.</p><span class="go">Đọc bài ↗</span></a>
+    <a class="card" href="#"><div class="meta"><span class="pill">THỰC CHIẾN</span><span>25/10/2026 · 6 phút</span></div><h3>Xây trợ lý AI cho công việc văn phòng trong 1 giờ</h3><p>Từ ý tưởng đến quy trình tự động hóa soạn thảo, tổng hợp và kiểm tra tài liệu.</p><span class="go">Đọc bài ↗</span></a>
+  </div>
+  <div class="panel grid" id="p1">
+    <a class="card" href="#"><div class="meta"><span class="pill">Skill · AI</span><span>Công khai</span></div><h3>Skill – Xử lý văn phòng</h3><p>Tự động tạo và kiểm tra tài liệu Word, Excel, PowerPoint theo chuẩn chuyên nghiệp.</p><span class="go">Truy cập ↗</span></a>
+    <a class="card" href="#"><div class="meta"><span class="pill">Tool</span><span>Công khai</span></div><h3>Công cụ che màn hình khi trình chiếu</h3><p>Tự động ẩn ứng dụng riêng tư khi dạy online hoặc quay video bài giảng.</p><span class="go">Truy cập ↗</span></a>
+    <a class="card" href="#"><div class="meta"><span class="pill">Ebook</span><span>Thành viên</span></div><h3>Xây dựng lực lượng lao động AI</h3><p>Tài liệu chuyên khảo về kiến trúc, quy trình và điều phối đội ngũ AI.</p><span class="go">Truy cập ↗</span></a>
+  </div>
+</div></section>
+
+<section id="lotrinh"><div class="wrap">
+  <div class="eyebrow">03 · Lộ trình năng lực</div>
+  <h2>Ba cấp độ từ cá nhân đến doanh nghiệp.</h2>
+  <div class="road">
+    <div class="step" data-n="01"><div class="lv">Cấp 01 · Cá nhân</div><h3>Vibe Working</h3><em>Từ người làm sang người giao việc.</em><p>Định hình lại vai trò từ <b>người trực tiếp thực thi</b> sang <b>người quản lý vận hành</b>, với năng lực giao việc, đánh giá và kiểm soát chất lượng.</p></div>
+    <div class="step" data-n="02"><div class="lv">Cấp 02 · Đội ngũ</div><h3>AI Workforce</h3><em>AI là lực lượng lao động có vai trò rõ ràng.</em><p>Con người <b>thiết kế nhiệm vụ, quy trình và chuẩn đầu ra</b> để AI tự chủ thực thi các công việc lặp lại.</p></div>
+    <div class="step" data-n="03"><div class="lv">Cấp 03 · Doanh nghiệp</div><h3>Digital Twins</h3><em>Vận hành trên một bản sao số cùng AI.</em><p>Quy trình, dữ liệu và tri thức được hệ thống hóa thành <b>bản sao số</b>, kết hợp tư duy cải tiến liên tục.</p></div>
+  </div>
+</div></section>
+<!--FX-->
+<section id="congcu"><div class="wrap"><div class="eyebrow">Công cụ lớp học</div><h2>Dành cho thầy cô và học sinh.</h2>
+<div class="grid panel on">
+<a class="card" href="#"><div class="meta"><span class="pill">Giáo viên</span><span>Miễn phí</span></div><h3>📝 Chấm bài từ ảnh</h3><p>Chụp phiếu trả lời, AI nhận diện và chấm điểm trắc nghiệm trong vài giây.</p><span class="go">Mở công cụ ↗</span></a>
+<a class="card" href="#"><div class="meta"><span class="pill">Cả lớp</span><span>Miễn phí</span></div><h3>🎮 Trò chơi lớp học</h3><p>Biến câu hỏi thành trò chơi thi đua, học sinh tham gia ngay trên điện thoại.</p><span class="go">Mở công cụ ↗</span></a>
+<a class="card" href="#"><div class="meta"><span class="pill">Giáo viên</span><span>Miễn phí</span></div><h3>📋 Soạn đề và ma trận</h3><p>Xây ma trận, bản đặc tả và đề kiểm tra theo đúng chuẩn chương trình.</p><span class="go">Mở công cụ ↗</span></a>
+<a class="card" href="#"><div class="meta"><span class="pill">Chủ nhiệm</span><span>Miễn phí</span></div><h3>✅ Sổ điểm danh</h3><p>Theo dõi chuyên cần, vi phạm và điểm cộng của lớp một cách gọn gàng.</p><span class="go">Mở công cụ ↗</span></a>
+</div></div></section>
+<section id="quiz"><div class="wrap"><div class="eyebrow">Thử thách mỗi ngày</div><h2>1 câu hỏi, 1 phút, mỗi ngày.</h2><div class="card" id="qz" style="max-width:680px"></div></div></section>
+<!--FXEND-->
+</main>
+
+<main id="v-posts" class="view"><div class="wrap pg">
+  <div class="eyebrow">Bài viết</div><h2>Kiến thức AI, chọn lọc và thực chiến.</h2>
+  <div class="bar"><input id="q" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết"></div>
+  <div class="tabs" id="cats"></div>
+  <div class="grid panel on" id="plist"></div>
+</div></main>
+
+<main id="v-about" class="view"><div class="wrap pg"><div class="ab">
+  <div class="lock"><div class="logo3d"></div><h3>Liêm Nguyễn</h3><p class="mut">Lập trình viên full-stack độc lập</p><p class="cp">Copyright belongs to Liêm Nguyễn.<br>Phone: <a href="tel:0815899878">0815899878</a></p></div>
+  <div><div class="eyebrow">Về tôi</div><h2>Xây ứng dụng AI tiếng Việt cho giáo dục và thông tin.</h2>
+   <p class="mut">Tôi thiết kế và phát triển các ứng dụng web ứng dụng AI, giúp giáo viên và người dùng Việt Nam làm việc nhanh hơn, rõ ràng hơn và thú vị hơn.</p>
+   <div class="chips"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Firebase</span><span>Gemini</span><span>OpenAI</span><span>Claude</span></div>
+   <div class="stats"><div><b>20+</b><span class="mut">Dự án</span></div><div><b>AI</b><span class="mut">Tập trung</span></div><div><b>VN</b><span class="mut">Thị trường</span></div></div>
+   <div class="cta" style="justify-content:flex-start"><a class="btn" href="tel:0815899878">Gọi 0815899878</a><a class="btn o" href="#bai-viet">Đọc bài viết</a></div>
+  </div></div></div></main>
+
+<main id="v-login" class="view"><div class="wrap pg"><div class="lgn">
+  <div class="l"><div class="logo3d"></div><h3>Chào mừng trở lại</h3><p class="mut">Đăng nhập để truy cập tài nguyên dành cho thành viên.</p></div>
+  <div class="r"><div class="tabs"><button class="tab on" data-m="in">Đăng nhập</button><button class="tab" data-m="up">Đăng ký</button></div>
+   <form id="lf">
+    <label class="fld" id="nm" hidden>Họ và tên<input type="text" placeholder="Nguyễn Văn A" autocomplete="name"></label>
+    <label class="fld">Email<input type="email" required placeholder="ban@email.com" autocomplete="email"></label>
+    <label class="fld">Mật khẩu<input id="pw" type="password" required minlength="6" placeholder="Tối thiểu 6 ký tự" autocomplete="current-password"></label>
+    <button class="btn" id="sb" style="width:100%;justify-content:center">Đăng nhập</button>
+    <button type="button" class="btn o" id="gg" style="width:100%;justify-content:center;margin-top:10px">Đăng nhập bằng Google</button>
+    <p class="msg" id="lm"></p>
+    <div id="mfa" hidden><label class="fld">Mã xác minh 6 số<input id="mc" inputmode="numeric" maxlength="6" placeholder="123456" autocomplete="one-time-code"></label><button type="button" class="btn" id="mv" style="width:100%;justify-content:center">Xác minh</button></div>
+   </form></div>
+</div></div></main>
+
+<div id="rc"></div>
+<main id="v-sec" class="view"><div class="wrap pg"><div class="eyebrow">Bảo mật</div><h2>Bảo mật tài khoản</h2>
+<p class="mut" id="secn">Vui lòng <a href="#dang-nhap" style="color:var(--a)">đăng nhập</a> để quản lý bảo mật.</p>
+<div class="step" id="secb" style="max-width:620px" hidden>
+<p><b id="s-em"></b></p><p><b id="s-mf"></b></p>
+<p class="msg" id="s-ad" hidden style="color:#e5484d">Tài khoản quản trị bắt buộc nên bật xác minh 2 bước.</p>
+<div id="s-ve" hidden><p>Cần xác minh email trước khi bật xác minh 2 bước.</p><div class="cta" style="justify-content:flex-start"><button class="btn" id="s-send">Gửi email xác minh</button><button class="btn o" id="s-rel">Tôi đã xác minh</button></div></div>
+<div id="s-en" hidden><label class="fld">Số điện thoại (định dạng quốc tế)<input id="s-ph" type="tel" placeholder="+84901234567" autocomplete="tel"></label><button class="btn o" id="s-code">Gửi mã SMS</button>
+<label class="fld" style="margin-top:14px">Mã 6 số<input id="s-cd" inputmode="numeric" maxlength="6"></label><button class="btn" id="s-conf">Bật xác minh 2 bước</button></div>
+<div id="s-off" hidden><button class="btn o" id="s-dis">Tắt xác minh 2 bước</button></div>
+<p class="msg" id="s-m"></p></div></div></main>
+
+<!--FX2-->
+<main id="v-bk" class="view"><div class="wrap pg"><div class="eyebrow">Dữ liệu</div><h2>Sao lưu và khôi phục</h2>
+<p class="mut" style="max-width:640px;margin-bottom:20px">Bản sao lưu gồm bài đã lưu, tiến độ lộ trình, chuỗi ngày học, cỡ chữ và giao diện sáng/tối. Mật khẩu và phiên đăng nhập không bao giờ nằm trong bản sao lưu.</p>
+<div class="step" style="max-width:720px">
+<div class="cta" style="justify-content:flex-start;margin:0 0 14px"><button class="btn" id="bk-dl">⬇ Tải bản sao lưu</button><button class="btn o" id="bk-cp">Sao chép</button><label class="btn o" for="bk-f" style="cursor:pointer">Chọn tệp khôi phục</label><input type="file" id="bk-f" accept=".json,application/json" hidden></div>
+<label class="fld">Nội dung sao lưu (dán bản đã lưu vào đây để khôi phục)<textarea id="bk-t" rows="9" spellcheck="false"></textarea></label>
+<div class="cta" style="justify-content:flex-start;margin:0"><button class="btn" id="bk-rs">Khôi phục từ nội dung trên</button><button class="btn o" id="bk-rm">Xóa dữ liệu trên máy này</button></div>
+<p class="msg" id="bk-m"></p></div></div></main>
+<!--FX2END-->
+<footer id="lienhe"><div class="wrap">
+  <div class="fr"><a class="logo" href="#trang-chu"><span class="logo3d" style="--s:34px"></span>© 2026 Liêm Nguyễn</a>
+  <nav><a href="#bai-viet">Bài viết</a><a href="#tai-nguyen">Tài nguyên</a><a href="#ve-toi">Về tôi</a><a href="#sao-luu">Sao lưu</a><a href="#dang-nhap">Đăng nhập</a></nav></div>
+  <p class="cp">Copyright belongs to Liêm Nguyễn. Phone: <a href="tel:0815899878">0815899878</a></p>
+  <p class="note">Nội dung chỉ mang tính tham khảo, không thay thế tư vấn chuyên môn. Vui lòng ghi nguồn khi trích dẫn.</p>
+</div></footer>
+<!--FXB-->
+<nav id="bn" aria-label="Điều hướng nhanh"><a href="#trang-chu"><i>🏠</i>Trang chủ</a><a href="#bai-viet"><i>📰</i>Bài viết</a><a href="#tai-nguyen"><i>📚</i>Tài nguyên</a><a href="#ve-toi"><i>👤</i>Về tôi</a><a href="#dang-nhap"><i>🔐</i>Tài khoản</a></nav>
+<div id="fs" role="group" aria-label="Cỡ chữ"><button data-z="-1" aria-label="Giảm cỡ chữ">A−</button><button data-z="1" aria-label="Tăng cỡ chữ">A+</button></div>
+<!--FXBEND-->
+<button id="tt" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện">◐</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.12.2/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.12.2/firebase-auth-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.12.2/firebase-firestore-compat.min.js"></script>
+<script>
+const $=s=>document.querySelectorAll(s);
+function show(id){$('.tab').forEach(t=>t.classList.toggle('on',t.dataset.p===id));$('.panel').forEach(p=>p.classList.toggle('on',p.id===id))}
+$('.tab').forEach(t=>t.onclick=()=>show(t.dataset.p));
+$('.logo3d').forEach(l=>{l.innerHTML='<div class="cube">'+['L','N','L','N','◆','◆'].map(c=>'<i>'+c+'</i>').join('')+'</div>'});
+const R={'bai-viet':'posts','ve-toi':'about','dang-nhap':'login','bao-mat':'sec'};
+function route(){const h=location.hash.slice(1)||'trang-chu',v=R[h]||'home';
+$('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
+$('nav a').forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#'+h));
+if(h==='lo-trinh')document.getElementById('lotrinh').scrollIntoView();
+else if(h==='tai-nguyen'){show('p1');document.getElementById('noidung').scrollIntoView()}
+else scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+const P=[['GÓC NHÌN','10/11/2026',5,'Bản tin AI tuần này: mô hình mới, chi phí API giảm','Tổng hợp những chuyển động đáng chú ý nhất của ngành AI trong tuần.'],['PHƯƠNG PHÁP','02/11/2026',9,'Giao việc cho AI bằng ngôn ngữ tự nhiên','Viết lệnh rõ ràng, tách mệnh lệnh và dữ liệu để AI làm đúng ngay lần đầu.'],['THỰC CHIẾN','25/10/2026',6,'Trợ lý AI cho công việc văn phòng trong 1 giờ','Tự động hóa soạn thảo, tổng hợp và kiểm tra tài liệu.'],['THỰC CHIẾN','18/10/2026',7,'Chấm bài từ ảnh chụp bằng AI','Quy trình nhận diện phiếu trả lời và chấm điểm nhanh cho giáo viên.'],['GÓC NHÌN','10/10/2026',5,'AI đang thay đổi cách chúng ta học như thế nào','Nhìn lại xu hướng học tập cá nhân hóa trong kỷ nguyên AI.'],['PHƯƠNG PHÁP','01/10/2026',8,'Thiết kế quy trình để AI tự chủ thực thi','Biến công việc lặp lại thành quy trình có đầu vào, đầu ra rõ ràng.'],['THỰC CHIẾN','22/09/2026',6,'Xây ứng dụng web AI với Next.js và Firebase','Khung dự án gọn nhẹ, dễ triển khai lên Vercel.'],['GÓC NHÌN','15/09/2026',4,'Vì sao nhiều người dùng AI mà chưa thấy hiệu quả','Thiếu điểm neo hệ thống là nguyên nhân phổ biến nhất.']];
+let cat='Tất cả';const C=['Tất cả','GÓC NHÌN','PHƯƠNG PHÁP','THỰC CHIẾN'],ql=document.getElementById('q');
+function rp(){document.getElementById('cats').innerHTML=C.map(c=>'<button class="tab'+(c===cat?' on':'')+'" data-c="'+c+'">'+c+'</button>').join('');
+$('#cats .tab').forEach(b=>b.onclick=()=>{cat=b.dataset.c;rp()});
+const s=ql.value.toLowerCase();
+document.getElementById('plist').innerHTML=P.filter(p=>(cat==='Tất cả'||p[0]===cat)&&(p[3]+p[4]).toLowerCase().includes(s)).map(p=>'<a class="card" href="#bai-viet"><div class="meta"><span class="pill">'+p[0]+'</span><span>'+p[1]+' · '+p[2]+' phút</span></div><h3>'+p[3]+'</h3><p>'+p[4]+'</p><span class="go">Đọc bài ↗</span></a>').join('')||'<p class="mut">Không tìm thấy bài viết phù hợp.</p>'}
+ql.oninput=rp;rp();
+let md='in';$('[data-m]').forEach(b=>b.onclick=()=>{md=b.dataset.m;$('[data-m]').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('nm').hidden=md==='in';document.getElementById('sb').textContent=md==='in'?'Đăng nhập':'Tạo tài khoản'});
+</script>
+<script>
+const firebaseConfig={apiKey:"AIzaSyBzAGuGHNsE491CXoiWvlxAeieBGyg2v",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"1:516078897448:web:bd018a9cce0780c55e681d"};
+if(typeof firebase==='undefined'||/^YOUR_/.test(firebaseConfig.apiKey)){const why=typeof firebase==='undefined'?'Không tải được Firebase. Kiểm tra mạng rồi tải lại trang.':'Chưa cấu hình Firebase: hãy điền firebaseConfig ở đầu phần script.';document.getElementById('lf').onsubmit=ev=>{ev.preventDefault();document.getElementById('lm').textContent=why};document.getElementById('gg').onclick=()=>{document.getElementById('lm').textContent=why};throw new Error(why)}
+firebase.initializeApp(firebaseConfig);const auth=firebase.auth(),db=firebase.firestore();
+let me=null;const hb=document.getElementById('hb'),lf=document.getElementById('lf'),lm=document.getElementById('lm');
+const VN={'auth/invalid-credential':'Sai email hoặc mật khẩu.','auth/wrong-password':'Sai email hoặc mật khẩu.','auth/user-not-found':'Sai email hoặc mật khẩu.','auth/email-already-in-use':'Email này đã được đăng ký.','auth/weak-password':'Mật khẩu quá yếu (tối thiểu 6 ký tự).','auth/invalid-email':'Email không hợp lệ.','auth/too-many-requests':'Thử quá nhiều lần, vui lòng đợi một lúc.','auth/invalid-verification-code':'Mã xác minh không đúng.','auth/code-expired':'Mã đã hết hạn, hãy gửi lại.','auth/requires-recent-login':'Vui lòng đăng xuất, đăng nhập lại rồi thử lại.','auth/invalid-phone-number':'Số điện thoại không hợp lệ (dạng +84...).','auth/unverified-email':'Cần xác minh email trước.','auth/second-factor-already-in-use':'Số này đã được dùng cho tài khoản.','auth/popup-closed-by-user':'Bạn đã đóng cửa sổ đăng nhập Google.','auth/cancelled-popup-request':'Cửa sổ đăng nhập Google đã bị hủy.','auth/account-exists-with-different-credential':'Email này đã đăng ký bằng cách khác, hãy đăng nhập bằng email và mật khẩu.'};
+function paint(){if(me){hb.textContent=(me.n.length>14?me.n.slice(0,13)+'…':me.n)+' · Đăng xuất';hb.href='#trang-chu';hb.title=me.r==='admin'?'Quản trị viên':'Thành viên'}else{hb.textContent='Đăng nhập';hb.href='#dang-nhap';hb.title=''}}
+function gate(){$('#p1 .card').forEach(c=>{const m=c.querySelector('.meta span:last-child').textContent.includes('Thành viên'),lock=m&&!me;c.setAttribute('href',lock?'#dang-nhap':'#tai-nguyen');c.querySelector('.go').textContent=lock?'🔒 Đăng nhập để xem':'Truy cập ↗'})}
+auth.onAuthStateChanged(async u=>{me=null;if(u){let r='member';try{const d=await db.collection('users').doc(u.uid).get();if(d.exists)r=d.data().role||'member';else await db.collection('users').doc(u.uid).set({name:u.displayName||'',email:u.email||'',role:'member',created:firebase.firestore.FieldValue.serverTimestamp()})}catch(e){}me={n:u.displayName||u.email,e:u.email,r}}paint();gate();secPaint()});
+hb.onclick=()=>{if(me)auth.signOut()};
+document.getElementById('gg').onclick=async()=>{lm.textContent='Đang mở cửa sổ Google...';const pv=new firebase.auth.GoogleAuthProvider();try{await auth.signInWithPopup(pv);lm.textContent='';location.hash='trang-chu'}catch(err){if(err.code==='auth/multi-factor-auth-required'){startMfa(err);return}if(err.code==='auth/popup-blocked'){await auth.signInWithRedirect(pv);return}lm.textContent=VN[err.code]||'Đã có lỗi, vui lòng thử lại.'}};
+lf.onsubmit=async e=>{e.preventDefault();const i=lf.querySelectorAll('input'),n=i[0].value.trim(),em=i[1].value.trim(),pw=i[2].value;lm.textContent='Đang xử lý...';
+try{if(md==='up'){if(!n){lm.textContent='Vui lòng nhập họ và tên.';return}
+const c=await auth.createUserWithEmailAndPassword(em,pw);await c.user.updateProfile({displayName:n});await c.user.sendEmailVerification();await db.collection('users').doc(c.user.uid).set({name:n,email:em,role:'member',created:firebase.firestore.FieldValue.serverTimestamp()})}
+else await auth.signInWithEmailAndPassword(em,pw);
+lm.textContent='';lf.reset();location.hash=md==='up'?'bao-mat':'trang-chu'}catch(err){if(err.code==='auth/multi-factor-auth-required'){startMfa(err);return}lm.textContent=VN[err.code]||'Đã có lỗi, vui lòng thử lại.'}};
+const E=id=>document.getElementById(id);let rv=null,mr=null,vid=null,evid=null;
+function rcap(){if(rv){try{rv.clear()}catch(e){}}E('rc').innerHTML='';rv=new firebase.auth.RecaptchaVerifier('rc',{size:'invisible'});return rv}
+async function startMfa(err){mr=err.resolver;const h=mr.hints[0];lm.textContent='Đang gửi mã tới '+(h.phoneNumber||'số điện thoại đã đăng ký')+'...';
+try{vid=await new firebase.auth.PhoneAuthProvider().verifyPhoneNumber({multiFactorHint:h,session:mr.session},rcap());E('mfa').hidden=false;lm.textContent='Nhập mã 6 số vừa nhận qua SMS.'}catch(e){lm.textContent=VN[e.code]||'Không gửi được mã, vui lòng thử lại.'}}
+E('mv').onclick=async()=>{try{const cr=firebase.auth.PhoneAuthProvider.credential(vid,E('mc').value.trim());await mr.resolveSignIn(firebase.auth.PhoneMultiFactorGenerator.assertion(cr));E('mfa').hidden=true;E('mc').value='';lm.textContent='';lf.reset();location.hash='trang-chu'}catch(e){lm.textContent=VN[e.code]||'Không xác minh được, vui lòng thử lại.'}};
+function secPaint(){const u=auth.currentUser;E('secb').hidden=!u;E('secn').hidden=!!u;if(!u)return;const en=u.multiFactor.enrolledFactors;
+E('s-em').textContent=u.emailVerified?'✔ Email đã xác minh':'✖ Email chưa xác minh';E('s-mf').textContent=en.length?'✔ Đã bật xác minh 2 bước ('+(en[0].phoneNumber||'SMS')+')':'✖ Chưa bật xác minh 2 bước';
+E('s-ve').hidden=u.emailVerified;E('s-en').hidden=!u.emailVerified||en.length>0;E('s-off').hidden=!en.length;E('s-ad').hidden=!(me&&me.r==='admin'&&!en.length)}
+const sm=t=>E('s-m').textContent=t,run=f=>async()=>{try{await f()}catch(e){sm(VN[e.code]||'Đã có lỗi, vui lòng thử lại.')}};
+E('s-send').onclick=run(async()=>{await auth.currentUser.sendEmailVerification();sm('Đã gửi email xác minh, hãy mở email và bấm vào liên kết.')});
+E('s-rel').onclick=run(async()=>{await auth.currentUser.reload();secPaint();sm('')});
+E('s-code').onclick=run(async()=>{const u=auth.currentUser,ss=await u.multiFactor.getSession();evid=await new firebase.auth.PhoneAuthProvider().verifyPhoneNumber({phoneNumber:E('s-ph').value.trim(),session:ss},rcap());sm('Đã gửi mã SMS, nhập mã bên dưới.')});
+E('s-conf').onclick=run(async()=>{const u=auth.currentUser,cr=firebase.auth.PhoneAuthProvider.credential(evid,E('s-cd').value.trim());await u.multiFactor.enroll(firebase.auth.PhoneMultiFactorGenerator.assertion(cr),'Điện thoại');await u.reload();E('s-cd').value='';secPaint();sm('Đã bật xác minh 2 bước.')});
+E('s-dis').onclick=run(async()=>{const u=auth.currentUser;await u.multiFactor.unenroll(u.multiFactor.enrolledFactors[0]);await u.reload();secPaint();sm('Đã tắt xác minh 2 bước.')});
+</script>
+<script>
+document.getElementById('tt').onclick=()=>{const r=document.documentElement,d=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0b0e1a';r.dataset.theme=d?'light':'dark'};
+/*FXJ*/
+(()=>{const ls=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},ss=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const Z=[.9,1,1.12,1.25];let zi=ls('gl_z',1);const zp=()=>$('header,main,footer').forEach(e=>e.style.zoom=Z[zi]);zp();
+$('#fs button').forEach(b=>b.onclick=()=>{zi=Math.max(0,Math.min(Z.length-1,zi+Number(b.dataset.z)));ss('gl_z',zi);zp()});
+let fv=ls('gl_fav',[]);const _rp=rp;C.push('Đã lưu');
+rp=function(){const k=cat;if(k==='Đã lưu')cat='Tất cả';_rp();cat=k;
+$('#cats .tab').forEach(b=>b.classList.toggle('on',b.dataset.c===cat));let n=0;
+$('#plist .card').forEach(c=>{const t=c.querySelector('h3').textContent,on=fv.includes(t);if(cat==='Đã lưu'&&!on){c.remove();return}n++;
+const b=document.createElement('button');b.className='fav'+(on?' on':'');b.textContent=on?'♥':'♡';b.setAttribute('aria-label','Lưu bài viết');
+b.onclick=e=>{e.preventDefault();e.stopPropagation();fv=fv.includes(t)?fv.filter(x=>x!==t):[...fv,t];ss('gl_fav',fv);rp()};c.appendChild(b)});
+if(!n&&cat==='Đã lưu')document.getElementById('plist').innerHTML='<p class="mut">Chưa có bài nào được lưu. Bấm ♡ trên thẻ bài viết để lưu.</p>'};
+ql.oninput=()=>rp();rp();
+const road=document.querySelector('.road'),st=[...$('.road .step')];let pr=ls('gl_prog',[]);
+road.insertAdjacentHTML('beforebegin','<div class="prog"><b id="pgt"></b> <span class="mut">hoàn thành trong lộ trình của bạn</span><div class="bar2"><i id="pgb"></i></div></div>');
+const pp=()=>{document.getElementById('pgt').textContent=pr.length+'/'+st.length+' cấp độ';document.getElementById('pgb').style.width=pr.length/st.length*100+'%';st.forEach((s,i)=>s.classList.toggle('ok',pr.includes(i)))};
+st.forEach((s,i)=>{const l=document.createElement('label');l.className='done';l.innerHTML='<input type="checkbox"> Đánh dấu đã hoàn thành';const c=l.querySelector('input');c.checked=pr.includes(i);c.onchange=()=>{pr=c.checked?[...new Set([...pr,i])]:pr.filter(x=>x!==i);ss('gl_prog',pr);pp()};s.appendChild(l)});pp();
+const Q=[['Điều gì giúp AI trả lời tốt hơn?',['Chỉ gõ một từ khóa','Nêu rõ bối cảnh, yêu cầu và định dạng mong muốn','Viết toàn chữ in hoa'],1],['Sau khi AI trả lời, em nên làm gì?',['Kiểm chứng với nguồn tin cậy','Chép nguyên văn nộp luôn','Tin ngay vì AI luôn đúng'],0],['Mật khẩu an toàn nên như thế nào?',['Ngày sinh của em','Dùng chung một mật khẩu cho mọi nơi','Dài, có chữ, số, ký hiệu và không dùng lại'],2],['Vì sao nên bật xác minh 2 bước?',['Để trang tải nhanh hơn','Thêm một lớp bảo vệ dù bị lộ mật khẩu','Để không phải nhớ mật khẩu'],1],['Khi dùng tài liệu trên mạng cần làm gì?',['Ghi rõ nguồn trích dẫn','Xóa tên tác giả','Nhận là của mình'],0]];
+const td=Math.floor(Date.now()/864e5),q=Q[td%Q.length],qz=document.getElementById('qz');let sk=ls('gl_streak',{d:0,n:0});
+const sh=()=>sk.n&&sk.d>=td-1?'🔥 Chuỗi '+sk.n+' ngày':'';
+function rq(a){qz.innerHTML='<b>'+q[0]+'</b>'+q[1].map((o,i)=>'<button class="opt'+(a!=null?(i===q[2]?' good':i===a?' bad':''):'')+'" data-i="'+i+'">'+o+'</button>').join('')+'<p class="msg">'+(a==null?sh():(a===q[2]?'Chính xác! '+sh():'Chưa đúng, thử lại ngày mai nhé.'))+'</p>';
+if(a==null)qz.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const a=Number(b.dataset.i);if(a===q[2]&&sk.d!==td){sk={d:td,n:sk.d===td-1?sk.n+1:1};ss('gl_streak',sk)}rq(a)})}
+rq()})();
+/*FXJEND*/
+/*FX2J*/
+(()=>{const E=id=>document.getElementById(id),H0=document.documentElement,m=t=>{E('bk-m').textContent=t};
+const T={'trang-chu':'Giáo Làng Sa Đéc','bai-viet':'Bài viết · Giáo Làng Sa Đéc','ve-toi':'Về tôi · Giáo Làng Sa Đéc','dang-nhap':'Đăng nhập · Giáo Làng Sa Đéc','bao-mat':'Bảo mật · Giáo Làng Sa Đéc','sao-luu':'Sao lưu · Giáo Làng Sa Đéc'};
+const st=()=>{document.title=T[location.hash.slice(1)]||T['trang-chu']};addEventListener('hashchange',st);
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href="#"]');if(a)e.preventDefault()});
+if(typeof IntersectionObserver==='function'){const io=new IntersectionObserver(es=>es.forEach(x=>{x.target.style.animationPlayState=x.isIntersecting?'running':'paused'}));$('.cube').forEach(c=>io.observe(c))}
+const own=Object.prototype.hasOwnProperty,K={gl_fav:v=>Array.isArray(v)&&v.length<=200&&v.every(x=>typeof x==='string'&&x.length<=200),gl_prog:v=>Array.isArray(v)&&v.length<=10&&v.every(x=>Number.isInteger(x)&&x>=0&&x<10),gl_streak:v=>!!v&&typeof v==='object'&&Number.isFinite(v.d)&&Number.isFinite(v.n)&&v.d>=0&&v.n>=0&&v.n<=100000,gl_z:v=>Number.isInteger(v)&&v>=0&&v<=3,gl_theme:v=>v==='light'||v==='dark'};
+const get=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+try{const th=get('gl_theme');if(th==='light'||th==='dark')H0.dataset.theme=th}catch(e){}
+const tt=E('tt'),_t=tt.onclick;tt.onclick=()=>{_t();try{localStorage.setItem('gl_theme',JSON.stringify(H0.dataset.theme))}catch(e){}};
+const snap=()=>{const d={};Object.keys(K).forEach(k=>{const v=get(k);if(v!=null&&K[k](v))d[k]=v});return JSON.stringify({app:'giao-lang-sa-dec',v:1,t:new Date().toISOString(),d},null,2)};
+function restore(txt){if(txt.length>1e5)return'Nội dung quá lớn (tối đa 100 KB).';let o;try{o=JSON.parse(txt)}catch(e){return'Nội dung không hợp lệ (không phải JSON).'}
+if(!o||o.app!=='giao-lang-sa-dec'||o.v!==1||!o.d||typeof o.d!=='object'||Array.isArray(o.d))return'Đây không phải bản sao lưu của trang này.';
+const ok=Object.keys(o.d).filter(k=>own.call(K,k)&&K[k](o.d[k]));if(!ok.length)return'Bản sao lưu không có dữ liệu hợp lệ.';
+ok.forEach(k=>{try{localStorage.setItem(k,JSON.stringify(o.d[k]))}catch(e){}});return'OK:'+ok.length}
+const doRs=t=>{const r=restore(t);if(r.startsWith('OK:')){m('Đã khôi phục '+r.slice(3)+' mục. Đang tải lại trang...');setTimeout(()=>location.reload(),700)}else m(r)};
+E('bk-dl').onclick=()=>{const t=snap();E('bk-t').value=t;try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'application/json'}));a.download='sao-luu-giao-lang-sa-dec-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();m('Đã tạo bản sao lưu. Nếu trình duyệt không tải xuống, hãy bấm Sao chép và lưu nội dung vào tệp .json.')}catch(e){m('Không tải được tệp, hãy dùng nút Sao chép.')}};
+E('bk-cp').onclick=async()=>{const t=snap(),ta=E('bk-t');ta.value=t;try{await navigator.clipboard.writeText(t);m('Đã sao chép vào bộ nhớ tạm.')}catch(e){ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e2){}m(ok?'Đã sao chép vào bộ nhớ tạm.':'Hãy bôi đen nội dung trong ô và sao chép thủ công.')}};
+E('bk-rs').onclick=()=>doRs(E('bk-t').value);
+E('bk-f').onchange=async()=>{const f=E('bk-f').files[0];if(!f)return;if(f.size>1e5){m('Tệp quá lớn (tối đa 100 KB).');return}try{const t=await f.text();E('bk-t').value=t;doRs(t)}catch(e){m('Không đọc được tệp.')}E('bk-f').value=''};
+let cf=0;E('bk-rm').onclick=function(){if(!cf){cf=1;this.textContent='Bấm lần nữa để xác nhận xóa';setTimeout(()=>{cf=0;this.textContent='Xóa dữ liệu trên máy này'},4000);return}Object.keys(K).forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});cf=0;m('Đã xóa dữ liệu cá nhân trên máy này. Đang tải lại...');setTimeout(()=>location.reload(),700)};
+const fill=()=>{if(location.hash==='#sao-luu')E('bk-t').value=snap()};addEventListener('hashchange',fill);
+R['sao-luu']='bk';route();st();fill()})();
+/*FX2JEND*/
+</script>
+</body>
+</html>
